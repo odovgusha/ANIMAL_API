@@ -31,11 +31,3 @@ python animals_web_generator.py
 
 
 #An HTML file called animals.html will be generated.
-
-#Project Structure
-.
-#├── animals_web_generator.py
-#├── data_fetcher.py
-#├── requirements.txt
-#├── .gitignore
-#└── README.md
