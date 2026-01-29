@@ -40,8 +40,10 @@ def main():
     ]
 
     if not animals_data:
+        print("No animals found. Have you specified a correct animal name?")
         animals_string_data = f'<h2>The animal "{animal_name}" doesn\'t exist.</h2>'
     else:
+        print("The animal '" + animal_name + "' already exists.")
         animals_string_data = ""
         for animal in animals_data:
             animals_string_data += serialize_animal(animal)
