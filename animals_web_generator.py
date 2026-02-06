@@ -1,8 +1,8 @@
 import os
-import data_fetcher  # your modular API fetcher
+import data_fetcher
 
 def serialize_animal(animal):
-    """Convert any animal dictionary to an HTML card."""
+    """ Convert a single animal dictionary into an HTML list item card. """
     output = '<li class="cards__item">\n'
 
     # Name
@@ -29,21 +29,19 @@ def serialize_animal(animal):
     return output
 
 def main():
+    """
+    Ask the user for an animal name, fetch matching animals from the API,
+    generate HTML cards for each result, and save the final webpage.
+    """
     animal_name = input("Please enter an animal: ")
 
     animals_data = data_fetcher.fetch_data(animal_name)
-
-    # Exact match filtering
-    animals_data = [
-        a for a in animals_data
-        if a.get("name", "").strip().lower() == animal_name.strip().lower()
-    ]
 
     if not animals_data:
         print("No animals found. Have you specified a correct animal name?")
         animals_string_data = f'<h2>The animal "{animal_name}" doesn\'t exist.</h2>'
     else:
-        print("The animal '" + animal_name + "' already exists.")
+        print(f"Found {len(animals_data)} animal(s).")
         animals_string_data = ""
         for animal in animals_data:
             animals_string_data += serialize_animal(animal)
